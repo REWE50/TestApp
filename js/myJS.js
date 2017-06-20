@@ -3,13 +3,24 @@ var myApp = angular.module("myToDoApp", []);
 		myApp.controller("myToDoListController", function($scope)		
 		
 		{
+			
+			
 			var todoList = 
 			[
-				{task: 'Task 1', description: 'Study Angular JS', done: 'false'},
-				{task: 'Task 2', description: 'Master Angular JS', done: 'false'}
+				{task: 'Task 1', description: 'Study Angular JS', done: false},
+				{task: 'Task 2', description: 'Master Angular JS', done: false}
 			];
 			
+			
 			$scope.todoList = todoList;
+			
+			
+			
+						
+			$scope.getNumTasks = function()
+			{
+				return $scope.todoList.length;
+			};
 			
 			$scope.addNewTask = function()
 			{			
@@ -26,29 +37,16 @@ var myApp = angular.module("myToDoApp", []);
 				$scope.newTask.description = "";
 			};
 			
-			/*
-			$scope.deleteCompletedTasks = function()
+			
+			$scope.removeCompletedTasks = function()
 			{
-				if($scope.todoList.done)
+				angular.forEach($scope.todoList, function(task, index)
+				{
+					if(task.done)
 					{
-						
-						$scope.todoList.push
-				(
-					{
-						task: "hello!",
-						description: "ASD",
-						done: true
+						todoList.splice(index, 1);
 					}
-				);
-						
-						
-						
-						
-						
-						$scope.todoList.splice
-						(
-							$index			
-						)
-					}
-			};*/
+				 })	
+			};
+			
 		});	

@@ -12,26 +12,18 @@
 <body data-ng-app="myToDoApp">
 	
 	<div class="container" data-ng-controller="myToDoListController">
-
-		<!-- adding new names to our array -->
+		<h3 data-ng-model="getNumTasks">No. of Tasks {{getNumTasks()}}</h3>
 		Name: <input type="text" data-ng-model="newTask.task" />
 		<br/>
 		Description: <input type="text" data-ng-model="newTask.description" />
 		<br/>
 		<button data-ng-click="addNewTask()">Add Task</button>
+	
+		<button data-ng-click="removeCompletedTasks($index)" >Delete Tasks</button>
 		
-		<!--
-		<button data-ng-click="deleteCompletedTasks($index)">Delete Tasks</button>
-		-->
-		
-		<!-- creating a filter to search our array -->
-		<!-- 
-		<input type="text" data-ng-model="searchName">{{searchName}}
-		-->
+				
 		<ul>
-			<!-- | lowercase and |uppercase are examples of filters -->
-			<!-- filter: searchName is our own filter -->
-			<li data-ng-repeat="currentTask in todoList" class="done-{{currentTask.done}}">{{currentTask.task}} - {{currentTask.description}}<input type="checkbox" data-ng-model="currentTask.done"></li>
+			<li data-ng-repeat="currentTask in todoList" class="done-{{currentTask.done}}">{{currentTask.task}} - {{currentTask.description}}<input type="checkbox" data-ng-model="currentTask.done">{{currentTask.done}} {{$index}}</li>
 		</ul>
 	</div>
 	
